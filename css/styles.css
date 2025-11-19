@@ -217,9 +217,106 @@ footer {
     padding: var(--space-m) 0;
 }
 
-/* ------------------------------
-   13. RESPONSIVIDADE
------------------------------- */
+/* ----------------------------------------
+   HERO SPLIT MODERNO RETRÔ — VISUAL A
+---------------------------------------- */
+
+#hero {
+    padding: var(--space-xl) 0;
+    border-bottom: 4px solid var(--metal);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+/* ----------------------------------------
+   COLUNA DE TEXTO
+---------------------------------------- */
+
+.hero-text {
+    display: flex;
+    gap: var(--space-l);
+    align-items: flex-start;
+}
+
+/* BADGE RETRÔ CIRCULAR */
+.hero-badge {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--red-diner);
+    background: var(--white);
+    color: var(--red-diner);
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 0 var(--metal);
+}
+
+.badge-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.badge-sub {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+/* BLOCO DE TÍTULO + CTA */
+.hero-heading-block h1 {
+    font-size: 2.75rem;
+    line-height: 1.05;
+    margin-bottom: var(--space-s);
+}
+
+.hero-sub {
+    margin-bottom: var(--space-m);
+    font-size: 1.1rem;
+}
+
+/* ----------------------------------------
+   COLUNA DE IMAGEM
+---------------------------------------- */
+
+.hero-image-wrapper img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+    border: 4px solid var(--metal);
+    box-shadow: 0 4px 0 var(--metal);
+}
+
+/* ----------------------------------------
+   RESPONSIVIDADE
+---------------------------------------- */
+
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-badge {
+        margin-bottom: var(--space-m);
+    }
+}
+
+
 
 @media (max-width: 768px) {
 
