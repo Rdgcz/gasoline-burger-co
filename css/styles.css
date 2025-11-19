@@ -553,3 +553,72 @@ nav a:focus-visible {
 .full-width {
     width: 100%;
 }
+
+/* ----------------------------------------
+   MANIFESTO — VISUAL DINER RETRÔ MODERNO
+---------------------------------------- */
+
+#manifesto {
+    padding: var(--space-xl) 0;
+    background-color: var(--white);
+}
+
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+/* TÍTULO COM IDENTIDADE */
+.manifesto-title-block {
+    position: relative;
+}
+
+.manifesto-title-block h2 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: var(--space-m);
+    text-transform: uppercase;
+}
+
+/* BARRA RETRÔ LATERAL */
+.manifesto-bar {
+    width: 60px;
+    height: 6px;
+    background: linear-gradient(
+        to right,
+        var(--red-diner),
+        var(--red-dark)
+    );
+    border-radius: 4px;
+}
+
+/* TEXTO */
+.manifesto-text p {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-m);
+    max-width: 480px;
+    line-height: 1.5;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .manifesto-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .manifesto-title-block {
+        margin-bottom: var(--space-l);
+    }
+
+    .manifesto-bar {
+        margin: 0 auto;
+    }
+
+    .manifesto-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
