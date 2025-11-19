@@ -1,75 +1,79 @@
-/* ----------------------------------------
-   1. RESET + BASE
----------------------------------------- */
+/* ========================================
+   RESET E CONFIGURAÇÕES BASE
+   ======================================== */
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    /* Cores - Paleta Diner Retrô */
+    --red-diner: #d62828;
+    --red-dark: #a41515;
+    --white: #ffffff;
+    --black: #1a1a1a;
+    --gray-light: #e9e9e9;
+    --metal: #cfcfcf;
+    
+    /* Espaçamentos */
+    --space-xs: 0.5rem;   /* 8px */
+    --space-s: 1rem;      /* 16px */
+    --space-m: 1.5rem;    /* 24px */
+    --space-l: 2.5rem;    /* 40px */
+    --space-xl: 4rem;     /* 64px */
+    
+    /* Layout */
+    --max-width: 1200px;
+    --radius-m: 8px;
+    
+    /* Breakpoints */
+    --bp-mobile: 768px;
+    --bp-tablet: 1024px;
+}
+
 html {
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
-    color: #1a1a1a;
-    line-height: 1.5;
+    background-color: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* ----------------------------------------
-   2. TOKENS (cores diner retrô)
----------------------------------------- */
-
-:root {
-    --red-diner: #d62828;         /* vermelho retrô */
-    --red-dark: #a41515;          /* vermelho profundo */
-    --white: #ffffff;
-    --black: #1a1a1a;
-    --gray-light: #e9e9e9;
-    --metal: #cfcfcf;             /* inox leve */
-
-    --max-width: 1200px;
-
-    --radius-m: 8px;
-
-    --space-xs: 8px;
-    --space-s: 16px;
-    --space-m: 24px;
-    --space-l: 40px;
-    --space-xl: 64px;
-}
-
-/* ----------------------------------------
-   3. CONTAINER
----------------------------------------- */
-
-.container {
-    max-width: var(--max-width);
-    width: 90%;
-    margin: 0 auto;
-}
-
-/* ----------------------------------------
-   4. TIPOGRAFIA (Oswald + Inter)
----------------------------------------- */
+/* ========================================
+   TIPOGRAFIA
+   ======================================== */
 
 h1, h2, h3 {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     line-height: 1.1;
+    font-weight: 700;
 }
 
-h1 { font-size: 2rem; }
-h2 { font-size: 1.75rem; margin-bottom: var(--space-s); }
-h3 { font-size: 1.25rem; }
+h1 { 
+    font-size: clamp(2rem, 5vw, 3rem); 
+    margin-bottom: var(--space-s);
+}
+
+h2 { 
+    font-size: clamp(1.5rem, 4vw, 2rem); 
+    margin-bottom: var(--space-s);
+}
+
+h3 { 
+    font-size: clamp(1.125rem, 3vw, 1.5rem); 
+    margin-bottom: var(--space-xs);
+}
 
 p, li, blockquote {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     margin-bottom: var(--space-s);
 }
 
@@ -78,21 +82,78 @@ small {
     font-size: 0.85rem;
 }
 
-/* ----------------------------------------
-   5. HEADER
----------------------------------------- */
+/* ========================================
+   LAYOUT E CONTAINER
+   ======================================== */
+
+.container {
+    max-width: var(--max-width);
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 var(--space-s);
+}
+
+/* ========================================
+   COMPONENTES REUTILIZÁVEIS
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-s) var(--space-l);
+    background-color: var(--red-diner);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius-m);
+    border: 3px solid var(--red-dark);
+    box-shadow: 0 4px 0 var(--red-dark);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    background-color: var(--red-dark);
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--red-dark);
+}
+
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+/* ========================================
+   HEADER E NAVEGAÇÃO
+   ======================================== */
 
 header {
     background-color: var(--red-diner);
     color: var(--white);
     padding: var(--space-s) 0;
     border-bottom: 4px solid var(--metal);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-header .container {
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: var(--space-m);
+}
+
+.logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 nav ul {
@@ -103,152 +164,51 @@ nav ul {
 
 nav a {
     color: var(--white);
+    text-decoration: none;
     font-weight: 600;
+    transition: opacity 0.2s ease;
 }
 
-header a.btn {
+nav a:hover {
+    opacity: 0.8;
+}
+
+.header-cta .btn {
     background-color: var(--white);
     color: var(--red-diner);
+    border-color: var(--white);
+    box-shadow: 0 4px 0 var(--metal);
 }
 
-/* ----------------------------------------
-   6. BOTÕES ESTILO DINER
----------------------------------------- */
-
-.btn {
-    display: inline-block;
-    padding: var(--space-s) var(--space-m);
-    background-color: var(--red-diner);
-    color: var(--white);
-    font-weight: 600;
-    border-radius: var(--radius-m);
-    text-align: center;
-    border: 2px solid var(--red-dark);
-    box-shadow: 0 2px 0 var(--red-dark);
-    transition: 0.2s ease;
-}
-
-.btn:hover {
-    background-color: var(--red-dark);
-}
-
-/* ----------------------------------------
-   7. HERO (2 colunas retrô)
----------------------------------------- */
+/* ========================================
+   HERO SECTION
+   ======================================== */
 
 #hero {
     padding: var(--space-xl) 0;
     border-bottom: 4px solid var(--metal);
-}
-
-#hero .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-l);
-    align-items: center;
-}
-
-#hero img {
-    width: 100%;
-    border: 4px solid var(--metal);
-    border-radius: var(--radius-m);
-}
-
-/* ----------------------------------------
-   8. SEÇÕES GERAIS
----------------------------------------- */
-
-section {
-    padding: var(--space-xl) 0;
-    border-bottom: 2px solid var(--gray-light);
-}
-
-/* ----------------------------------------
-   9. CARDÁPIO
----------------------------------------- */
-
-#cardapio h2 {
-    border-left: 8px solid var(--red-diner);
-    padding-left: var(--space-s);
-}
-
-#cardapio .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-m);
-}
-
-article {
-    padding: var(--space-m);
-    border: 2px solid var(--metal);
-    border-radius: var(--radius-m);
-    background-color: var(--white);
-    box-shadow: 0 3px 0 var(--metal);
-}
-
-/* ----------------------------------------
-   10. REVIEWS
----------------------------------------- */
-
-blockquote {
-    padding: var(--space-m);
-    border-left: 6px solid var(--red-diner);
-    background-color: #fff6f6;
-    margin-bottom: var(--space-m);
-}
-
-/* ----------------------------------------
-   11. COMO PEDIR
----------------------------------------- */
-
-#como-pedir ol {
-    margin-left: var(--space-m);
-    font-weight: 500;
-}
-
-/* ----------------------------------------
-   12. FOOTER
----------------------------------------- */
-
-footer {
-    background-color: var(--black);
-    color: var(--white);
-    text-align: center;
-    padding: var(--space-m) 0;
-}
-
-/* ----------------------------------------
-   HERO SPLIT MODERNO RETRÔ — VISUAL A
----------------------------------------- */
-
-#hero {
-    padding: var(--space-xl) 0;
-    border-bottom: 4px solid var(--metal);
+    background: linear-gradient(135deg, var(--white) 0%, #fff8f8 100%);
 }
 
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+    grid-template-columns: 1.2fr 1fr;
     gap: var(--space-xl);
+    align-items: center;
 }
 
-/* ----------------------------------------
-   COLUNA DE TEXTO
----------------------------------------- */
-
-.hero-text {
+.hero-content {
     display: flex;
     gap: var(--space-l);
     align-items: flex-start;
 }
 
-/* BADGE RETRÔ CIRCULAR */
 .hero-badge {
+    flex-shrink: 0;
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 5px solid var(--red-diner);
+    border: 6px solid var(--red-diner);
     background: var(--white);
     color: var(--red-diner);
     font-family: 'Oswald', sans-serif;
@@ -258,12 +218,14 @@ footer {
     align-items: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 4px 0 var(--metal);
+    box-shadow: 0 6px 0 var(--metal);
+    transform: translateY(-10px);
 }
 
 .badge-title {
     font-size: 0.85rem;
     font-weight: 700;
+    line-height: 1.1;
 }
 
 .badge-sub {
@@ -271,135 +233,307 @@ footer {
     opacity: 0.8;
 }
 
-/* BLOCO DE TÍTULO + CTA */
-.hero-heading-block h1 {
-    font-size: 2.75rem;
+.hero-text h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
     line-height: 1.05;
-    margin-bottom: var(--space-s);
-}
-
-.hero-sub {
-    margin-bottom: var(--space-m);
-    font-size: 1.1rem;
-}
-
-/* ----------------------------------------
-   COLUNA DE IMAGEM
----------------------------------------- */
-
-.hero-image-wrapper img {
-    width: 100%;
-    height: 480px;
-    object-fit: cover;
-    border-radius: var(--radius-m);
-    border: 4px solid var(--metal);
-    box-shadow: 0 4px 0 var(--metal);
-}
-
-/* ----------------------------------------
-   RESPONSIVIDADE
----------------------------------------- */
-
-@media (max-width: 900px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-text {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-badge {
-        margin-bottom: var(--space-m);
-    }
-}
-
-
-
-@media (max-width: 768px) {
-
-    #hero .container {
-        grid-template-columns: 1fr;
-    }
-
-    #cardapio .grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-
-    #cardapio .grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ----------------------------------------
-   REFINAMENTO HERO PROFISSIONAL
----------------------------------------- */
-
-/* Grade com proporção melhor */
-.hero-grid {
-    grid-template-columns: 1.2fr 1fr;
-}
-
-/* BADGE mais forte */
-.hero-badge {
-    transform: translateY(-10px);
-    border-width: 6px;
-    box-shadow: 0 6px 0 var(--metal);
-}
-
-/* Headline com maior presença */
-.hero-heading-block h1 {
-    font-size: 3rem;
-    line-height: 1.0;
     margin-bottom: var(--space-xs);
 }
 
-/* Subheadline mais clara */
-.hero-sub {
-    font-size: 1.15rem;
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin-bottom: var(--space-m);
     max-width: 380px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius-m);
+    border: 4px solid var(--metal);
+    box-shadow: 0 6px 0 var(--metal);
+}
+
+/* ========================================
+   SEÇÕES DE CONTEÚDO
+   ======================================== */
+
+section {
+    padding: var(--space-xl) 0;
+    border-bottom: 2px solid var(--gray-light);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+/* Manifesto Section */
+.manifesto p {
+    font-size: 1.1rem;
+    font-weight: 500;
     margin-bottom: var(--space-m);
 }
 
-/* Imagem melhor controlada */
-.hero-image-wrapper img {
-    height: 420px;
-    object-position: center top;
+/* Cardápio Section */
+#cardapio h2 {
+    border-left: 8px solid var(--red-diner);
+    padding-left: var(--space-s);
+    margin-bottom: var(--space-l);
 }
 
-/* CTA refinado */
-.hero-btn {
-    padding: 14px 28px;
-    font-size: 1rem;
-    box-shadow: 0 3px 0 var(--red-dark);
+.cardapio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-m);
 }
 
-/* MOBILE */
-@media (max-width: 900px) {
+.cardapio-item {
+    padding: var(--space-m);
+    border: 2px solid var(--metal);
+    border-radius: var(--radius-m);
+    background-color: var(--white);
+    box-shadow: 0 4px 0 var(--metal);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardapio-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 0 var(--metal);
+}
+
+/* Reviews Section */
+blockquote {
+    padding: var(--space-m);
+    border-left: 6px solid var(--red-diner);
+    background-color: #fff6f6;
+    margin-bottom: var(--space-m);
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+}
+
+blockquote footer {
+    font-weight: 600;
+    color: var(--red-diner);
+    margin-top: var(--space-xs);
+}
+
+/* Como Pedir Section */
+#como-pedir ol {
+    margin-left: var(--space-m);
+    font-weight: 500;
+    counter-reset: step-counter;
+}
+
+#como-pedir li {
+    margin-bottom: var(--space-s);
+    position: relative;
+    padding-left: var(--space-m);
+}
+
+#como-pedir li::before {
+    counter-increment: step-counter;
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--red-diner);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Informações Section */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-m);
+}
+
+.info-item {
+    text-align: center;
+    padding: var(--space-m);
+    background: var(--gray-light);
+    border-radius: var(--radius-m);
+}
+
+/* Pedido Section */
+#pedido {
+    text-align: center;
+    background: linear-gradient(135deg, var(--red-diner) 0%, var(--red-dark) 100%);
+    color: var(--white);
+    border-bottom: none;
+}
+
+#pedido .btn {
+    background-color: var(--white);
+    color: var(--red-diner);
+    border-color: var(--white);
+    box-shadow: 0 4px 0 var(--metal);
+    font-size: 1.25rem;
+    padding: var(--space-m) var(--space-xl);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: var(--space-l) 0;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    :root {
+        --space-xl: 3rem;
+        --space-l: 2rem;
+    }
+    
     .hero-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-l);
         text-align: center;
     }
-
+    
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-m);
+    }
+    
     .hero-badge {
-        margin-bottom: var(--space-m);
+        transform: none;
+        margin-bottom: var(--space-s);
     }
-
-    .hero-heading-block h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-sub {
-        font-size: 1rem;
+    
+    .hero-subtitle {
         max-width: 100%;
     }
+}
 
-    .hero-image-wrapper img {
-        height: 320px;
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        --space-xl: 2.5rem;
+        --space-l: 1.5rem;
     }
+    
+    .header-content {
+        flex-direction: column;
+        gap: var(--space-s);
+    }
+    
+    nav ul {
+        gap: var(--space-s);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero-image {
+        height: 300px;
+    }
+    
+    .cardapio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #como-pedir ol {
+        margin-left: 0;
+    }
+    
+    #como-pedir li {
+        padding-left: var(--space-l);
+    }
+}
+
+/* Mobile Pequeno */
+@media (max-width: 480px) {
+    :root {
+        --space-xl: 2rem;
+    }
+    
+    .container {
+        width: 95%;
+        padding: 0 var(--space-xs);
+    }
+    
+    .hero-badge {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .badge-title {
+        font-size: 0.75rem;
+    }
+    
+    .badge-sub {
+        font-size: 0.65rem;
+    }
+    
+    #pedido .btn {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+}
+
+/* ========================================
+   ACESSIBILIDADE
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* Foco visível para teclado */
+.btn:focus-visible,
+nav a:focus-visible {
+    outline: 3px solid var(--red-dark);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   UTILITÁRIOS
+   ======================================== */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
 }
