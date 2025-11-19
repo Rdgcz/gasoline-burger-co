@@ -187,7 +187,7 @@ nav a:hover {
 #hero {
     padding: var(--space-l) 0 var(--space-xl) 0;
     border-bottom: 4px solid var(--metal);
-    background: linear-gradient(135deg, var(--white) 0%, #fff8f8 100%);
+    background:  var(--white);
 }
 
 .hero-grid {
