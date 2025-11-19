@@ -254,6 +254,14 @@ nav a:hover {
     box-shadow: 0 6px 0 var(--metal);
 }
 
+.hero-image-wrapper img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
 /* DIVISOR RETRÔ DINER */
 .hero-divider {
     width: 100%;
@@ -285,10 +293,27 @@ section:last-of-type {
 
 /* Manifesto Section */
 .manifesto p {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 2.2rem;
+    font-weight: 600;
     margin-bottom: var(--space-m);
+    padding: var(--space-l) 0 var(--space-xl) 0;
 }
+
+.manifesto-title-block h2 {
+    margin-bottom: var(--space-s);
+}
+
+.manifesto-text p {
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .manifesto-text p {
+        max-width: 90%;
+    }
+}
+
+
 
 /* Cardápio Section */
 #cardapio h2 {
@@ -408,6 +433,13 @@ footer {
 /* ========================================
    RESPONSIVIDADE
    ======================================== */
+
+@media (min-width: 900px) {
+    .hero-image-wrapper img {
+        height: 420px;
+    }
+}
+  
 
 /* Tablet */
 @media (max-width: 1024px) {
