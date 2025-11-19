@@ -1,0 +1,240 @@
+/* ----------------------------------------
+   1. RESET + BASE
+---------------------------------------- */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.5;
+}
+
+/* ----------------------------------------
+   2. TOKENS (cores diner retrô)
+---------------------------------------- */
+
+:root {
+    --red-diner: #d62828;         /* vermelho retrô */
+    --red-dark: #a41515;          /* vermelho profundo */
+    --white: #ffffff;
+    --black: #1a1a1a;
+    --gray-light: #e9e9e9;
+    --metal: #cfcfcf;             /* inox leve */
+
+    --max-width: 1200px;
+
+    --radius-m: 8px;
+
+    --space-xs: 8px;
+    --space-s: 16px;
+    --space-m: 24px;
+    --space-l: 40px;
+    --space-xl: 64px;
+}
+
+/* ----------------------------------------
+   3. CONTAINER
+---------------------------------------- */
+
+.container {
+    max-width: var(--max-width);
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* ----------------------------------------
+   4. TIPOGRAFIA (Oswald + Inter)
+---------------------------------------- */
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.1;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; margin-bottom: var(--space-s); }
+h3 { font-size: 1.25rem; }
+
+p, li, blockquote {
+    font-size: 1rem;
+    margin-bottom: var(--space-s);
+}
+
+small {
+    opacity: 0.7;
+    font-size: 0.85rem;
+}
+
+/* ----------------------------------------
+   5. HEADER
+---------------------------------------- */
+
+header {
+    background-color: var(--red-diner);
+    color: var(--white);
+    padding: var(--space-s) 0;
+    border-bottom: 4px solid var(--metal);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--space-m);
+}
+
+nav a {
+    color: var(--white);
+    font-weight: 600;
+}
+
+header a.btn {
+    background-color: var(--white);
+    color: var(--red-diner);
+}
+
+/* ----------------------------------------
+   6. BOTÕES ESTILO DINER
+---------------------------------------- */
+
+.btn {
+    display: inline-block;
+    padding: var(--space-s) var(--space-m);
+    background-color: var(--red-diner);
+    color: var(--white);
+    font-weight: 600;
+    border-radius: var(--radius-m);
+    text-align: center;
+    border: 2px solid var(--red-dark);
+    box-shadow: 0 2px 0 var(--red-dark);
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--red-dark);
+}
+
+/* ----------------------------------------
+   7. HERO (2 colunas retrô)
+---------------------------------------- */
+
+#hero {
+    padding: var(--space-xl) 0;
+    border-bottom: 4px solid var(--metal);
+}
+
+#hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-l);
+    align-items: center;
+}
+
+#hero img {
+    width: 100%;
+    border: 4px solid var(--metal);
+    border-radius: var(--radius-m);
+}
+
+/* ----------------------------------------
+   8. SEÇÕES GERAIS
+---------------------------------------- */
+
+section {
+    padding: var(--space-xl) 0;
+    border-bottom: 2px solid var(--gray-light);
+}
+
+/* ----------------------------------------
+   9. CARDÁPIO
+---------------------------------------- */
+
+#cardapio h2 {
+    border-left: 8px solid var(--red-diner);
+    padding-left: var(--space-s);
+}
+
+#cardapio .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-m);
+}
+
+article {
+    padding: var(--space-m);
+    border: 2px solid var(--metal);
+    border-radius: var(--radius-m);
+    background-color: var(--white);
+    box-shadow: 0 3px 0 var(--metal);
+}
+
+/* ----------------------------------------
+   10. REVIEWS
+---------------------------------------- */
+
+blockquote {
+    padding: var(--space-m);
+    border-left: 6px solid var(--red-diner);
+    background-color: #fff6f6;
+    margin-bottom: var(--space-m);
+}
+
+/* ----------------------------------------
+   11. COMO PEDIR
+---------------------------------------- */
+
+#como-pedir ol {
+    margin-left: var(--space-m);
+    font-weight: 500;
+}
+
+/* ----------------------------------------
+   12. FOOTER
+---------------------------------------- */
+
+footer {
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: var(--space-m) 0;
+}
+
+/* ------------------------------
+   13. RESPONSIVIDADE
+------------------------------ */
+
+@media (max-width: 768px) {
+
+    #hero .container {
+        grid-template-columns: 1fr;
+    }
+
+    #cardapio .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+
+    #cardapio .grid {
+        grid-template-columns: 1fr;
+    }
+}
