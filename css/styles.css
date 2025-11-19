@@ -335,3 +335,71 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* ----------------------------------------
+   REFINAMENTO HERO PROFISSIONAL
+---------------------------------------- */
+
+/* Grade com proporção melhor */
+.hero-grid {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+/* BADGE mais forte */
+.hero-badge {
+    transform: translateY(-10px);
+    border-width: 6px;
+    box-shadow: 0 6px 0 var(--metal);
+}
+
+/* Headline com maior presença */
+.hero-heading-block h1 {
+    font-size: 3rem;
+    line-height: 1.0;
+    margin-bottom: var(--space-xs);
+}
+
+/* Subheadline mais clara */
+.hero-sub {
+    font-size: 1.15rem;
+    max-width: 380px;
+    margin-bottom: var(--space-m);
+}
+
+/* Imagem melhor controlada */
+.hero-image-wrapper img {
+    height: 420px;
+    object-position: center top;
+}
+
+/* CTA refinado */
+.hero-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    box-shadow: 0 3px 0 var(--red-dark);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-badge {
+        margin-bottom: var(--space-m);
+    }
+
+    .hero-heading-block h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-image-wrapper img {
+        height: 320px;
+    }
+}
