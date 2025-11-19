@@ -46,6 +46,11 @@ body {
     overflow-x: hidden;
 }
 
+body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 /* ========================================
    TIPOGRAFIA
    ======================================== */
@@ -195,6 +200,14 @@ nav a:hover {
     grid-template-columns: 1.2fr 1fr;
     gap: var(--space-xl);
     align-items: center;
+    overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1fr !important;
+        overflow-x: hidden;
+    }
 }
 
 .hero-content {
@@ -254,12 +267,24 @@ nav a:hover {
     box-shadow: 0 6px 0 var(--metal);
 }
 
+.hero-image-wrapper {
+    max-width: 100%;
+}
+
+
 .hero-image-wrapper img {
     width: 100%;
     max-width: 100%;
     height: auto;
     object-fit: cover;
 }
+
+.hero-text,
+.hero-image-wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 
 
 /* DIVISOR RETRÔ DINER */
