@@ -438,6 +438,78 @@ nav a {
 }
 
 /* ========================================
+   CTA - PLACA VINTAGE
+======================================== */
+
+#cta-pedido {
+    padding: var(--space-xl) 0;
+    background: var(--white);
+}
+
+.cta-board {
+    background: var(--white);
+    border: 4px solid var(--metal);
+    border-radius: var(--radius-m);
+    padding: var(--space-xl) var(--space-l);
+    text-align: center;
+    box-shadow: 0 8px 0 var(--metal);
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* microbordas superior e inferior */
+.cta-board::before,
+.cta-board::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 70%;
+    height: 6px;
+    background: linear-gradient(to right, var(--red-diner), var(--red-dark));
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+.cta-board::before {
+    top: -20px;
+}
+
+.cta-board::after {
+    bottom: -20px;
+}
+
+.cta-board h2 {
+    font-size: 2.2rem;
+    margin-bottom: var(--space-s);
+    text-transform: uppercase;
+}
+
+.cta-board p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: var(--space-m);
+}
+
+.cta-btn {
+    font-size: 1.1rem;
+    padding: 14px 30px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+
+    .cta-board {
+        padding: var(--space-l) var(--space-m);
+    }
+
+    .cta-board h2 {
+        font-size: 1.7rem;
+    }
+}
+
+
+/* ========================================
    10. REVIEWS / COMO PEDIR / INFO / PEDIDO
 ======================================== */
 
