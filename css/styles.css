@@ -315,7 +315,7 @@ nav a {
 
 #cardapio {
     padding: var(--space-xl) 0;
-    background-color: var(--white);
+    background: linear-gradient(180deg, #ffffff 0%, #fdfdfd 100%);
     border-top: 2px solid var(--gray-light);
     border-bottom: 2px solid var(--gray-light);
 }
@@ -332,6 +332,8 @@ nav a {
     letter-spacing: 2px;
     position: relative;
     display: inline-block;
+    line-height: 1;
+    padding-bottom: 14px;
 }
 
 .menu-header h2::after {
@@ -347,8 +349,9 @@ nav a {
 
 .menu-subtitle {
     font-size: 1rem;
-    opacity: 0.8;
-    margin-top: var(--space-m);
+    font-weight: 500;
+    opacity: 0.85;
+    margin-top: var(--space-s);
 }
 
 /* GRID DOS ITENS */
@@ -356,7 +359,7 @@ nav a {
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(260px, 1fr));
-    gap: var(--space-l);
+    gap: var(--space-xl) var(--space-l);
 }
 
 /* CARD INDIVIDUAL */
@@ -370,11 +373,12 @@ nav a {
     display: flex;
     flex-direction: column;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 6px 0 var(--metal);
 }
 
 .menu-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 0 var(--metal);
+    transform: translateY(-6px);
+    box-shadow: 0 9px 0 var(--metal);
 }
 
 /* MINI FOTO */
@@ -392,6 +396,7 @@ nav a {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    filter: contrast(1.05) brightness(1.04);
 }
 
 .menu-item:hover .menu-thumb img {
@@ -401,14 +406,14 @@ nav a {
 /* CONTEÚDO DO CARD */
 
 .menu-body {
-    padding: var(--space-m);
+    padding: var(--space-m) var(--space-m) var(--space-l) var(--space-m);
 }
 
 .menu-title-row {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-s);
     gap: var(--space-s);
 }
 
@@ -429,6 +434,7 @@ nav a {
     font-size: 1rem;
     opacity: 0.85;
     line-height: 1.45;
+    margin-top: var(--space-xs);
 }
 
 /* ========================================
@@ -597,6 +603,7 @@ footer {
 @media (max-width: 600px) {
     #cardapio {
         padding: var(--space-l) 0;
+        background: linear-gradient(180deg, #ffffff 0%, #fdfdfd 100%);
     }
 
     .menu-grid {
