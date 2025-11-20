@@ -1,36 +1,19 @@
 /* ========================================
-   RESET E CONFIGURAÇÕES BASE
-   ======================================== */
+   1. RESET + BASE
+======================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root {
-    /* Cores - Paleta Diner Retrô */
-    --red-diner: #d62828;
-    --red-dark: #a41515;
-    --white: #ffffff;
-    --black: #1a1a1a;
-    --gray-light: #e9e9e9;
-    --metal: #cfcfcf;
-    
-    /* Espaçamentos */
-    --space-xs: 0.5rem;   /* 8px */
-    --space-s: 1rem;      /* 16px */
-    --space-m: 1.5rem;    /* 24px */
-    --space-l: 2.5rem;    /* 40px */
-    --space-xl: 4rem;     /* 64px */
-    
-    /* Layout */
-    --max-width: 1200px;
-    --radius-m: 8px;
-    
-    /* Breakpoints */
-    --bp-mobile: 768px;
-    --bp-tablet: 1024px;
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 html {
@@ -40,184 +23,174 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-body, html {
-    max-width: 100%;
-    overflow-x: hidden;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.5;
 }
 
 /* ========================================
-   TIPOGRAFIA
-   ======================================== */
+   2. TOKENS (cores, espaçamento, etc.)
+======================================== */
 
-h1, h2, h3 {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    line-height: 1.1;
-    font-weight: 700;
-}
+:root {
+    --red-diner: #d62828;
+    --red-dark: #a41515;
+    --white: #ffffff;
+    --black: #1a1a1a;
+    --gray-light: #e9e9e9;
+    --gray-soft: #f7f7f7;
+    --metal: #cfcfcf;
 
-h1 { 
-    font-size: clamp(2rem, 5vw, 3rem); 
-    margin-bottom: var(--space-s);
-}
+    --max-width: 1200px;
 
-h2 { 
-    font-size: clamp(1.5rem, 4vw, 2rem); 
-    margin-bottom: var(--space-s);
-}
+    --radius-s: 4px;
+    --radius-m: 8px;
 
-h3 { 
-    font-size: clamp(1.125rem, 3vw, 1.5rem); 
-    margin-bottom: var(--space-xs);
-}
-
-p, li, blockquote {
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    margin-bottom: var(--space-s);
-}
-
-small {
-    opacity: 0.7;
-    font-size: 0.85rem;
+    --space-xs: 8px;
+    --space-s: 16px;
+    --space-m: 24px;
+    --space-l: 40px;
+    --space-xl: 64px;
 }
 
 /* ========================================
-   LAYOUT E CONTAINER
-   ======================================== */
+   3. LAYOUT BASE
+======================================== */
 
 .container {
     max-width: var(--max-width);
     width: 90%;
     margin: 0 auto;
-    padding: 0 var(--space-s);
+}
+
+/* espaçamento padrão de seções */
+section {
+    padding: var(--space-xl) 0;
 }
 
 /* ========================================
-   COMPONENTES REUTILIZÁVEIS
-   ======================================== */
+   4. TIPOGRAFIA GLOBAL
+======================================== */
+
+h1,
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-s);
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    margin-bottom: var(--space-s);
+}
+
+small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================================
+   5. BOTÕES
+======================================== */
 
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-s) var(--space-l);
+    display: inline-block;
+    padding: var(--space-s) var(--space-m);
     background-color: var(--red-diner);
     color: var(--white);
-    font-family: 'Oswald', sans-serif;
     font-weight: 600;
-    text-transform: uppercase;
-    text-decoration: none;
     border-radius: var(--radius-m);
-    border: 3px solid var(--red-dark);
-    box-shadow: 0 4px 0 var(--red-dark);
-    transition: all 0.2s ease;
+    border: 2px solid var(--red-dark);
+    box-shadow: 0 3px 0 var(--red-dark);
+    text-align: center;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn:hover {
     background-color: var(--red-dark);
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 var(--red-dark);
-}
-
-.btn:active {
-    transform: translateY(4px);
-    box-shadow: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 var(--red-dark);
 }
 
 /* ========================================
-   HEADER E NAVEGAÇÃO
-   ======================================== */
+   6. HEADER
+======================================== */
 
 header {
     background-color: var(--red-diner);
     color: var(--white);
     padding: var(--space-s) 0;
     border-bottom: 4px solid var(--metal);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
-.header-content {
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--space-m);
 }
 
-.logo {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
+header h1 {
+    font-size: 1.6rem;
 }
 
 nav ul {
-    display: flex;
     list-style: none;
+    display: flex;
     gap: var(--space-m);
 }
 
 nav a {
-    color: var(--white);
-    text-decoration: none;
     font-weight: 600;
-    transition: opacity 0.2s ease;
-}
-
-nav a:hover {
-    opacity: 0.8;
-}
-
-.header-cta .btn {
-    background-color: var(--white);
-    color: var(--red-diner);
-    border-color: var(--white);
-    box-shadow: 0 4px 0 var(--metal);
 }
 
 /* ========================================
-   HERO SECTION
-   ======================================== */
+   7. HERO (split moderno retrô)
+======================================== */
 
 #hero {
     padding: var(--space-l) 0 var(--space-xl) 0;
     border-bottom: 4px solid var(--metal);
-    background:  var(--white);
+    background-color: var(--white);
 }
 
 .hero-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: var(--space-xl);
     align-items: center;
-    overflow-x: hidden;
+    gap: var(--space-xl);
+    max-width: 100%;
 }
 
-@media (max-width: 900px) {
-    .hero-grid {
-        grid-template-columns: 1fr !important;
-        overflow-x: hidden;
-    }
-}
-
-.hero-content {
+.hero-text {
     display: flex;
     gap: var(--space-l);
     align-items: flex-start;
+    max-width: 100%;
 }
 
+/* Badge retrô circular */
 .hero-badge {
-    flex-shrink: 0;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -238,7 +211,6 @@ nav a:hover {
 .badge-title {
     font-size: 0.85rem;
     font-weight: 700;
-    line-height: 1.1;
 }
 
 .badge-sub {
@@ -246,48 +218,42 @@ nav a:hover {
     opacity: 0.8;
 }
 
-.hero-text h1 {
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    line-height: 1.05;
+/* Bloco de texto do hero */
+.hero-heading-block h1 {
+    font-size: 3rem;
+    line-height: 1;
     margin-bottom: var(--space-xs);
 }
 
-.hero-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    margin-bottom: var(--space-m);
+.hero-sub {
+    font-size: 1.15rem;
     max-width: 380px;
+    margin-bottom: var(--space-m);
 }
 
-.hero-image {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
-    border-radius: var(--radius-m);
-    border: 4px solid var(--metal);
-    box-shadow: 0 6px 0 var(--metal);
+.hero-btn {
+    padding: 14px 28px;
+    font-size: 1rem;
+    box-shadow: 0 3px 0 var(--red-dark);
 }
 
+/* Imagem do hero */
 .hero-image-wrapper {
     max-width: 100%;
 }
-
 
 .hero-image-wrapper img {
     width: 100%;
     max-width: 100%;
-    height: auto;
+    height: 420px;
     object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-m);
+    border: 4px solid var(--metal);
+    box-shadow: 0 4px 0 var(--metal);
 }
 
-.hero-text,
-.hero-image-wrapper {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-
-
-/* DIVISOR RETRÔ DINER */
+/* Divisor retrô abaixo do hero */
 .hero-divider {
     width: 100%;
     height: 6px;
@@ -302,47 +268,50 @@ nav a:hover {
     border-radius: 4px;
 }
 
-
 /* ========================================
-   SEÇÕES DE CONTEÚDO
-   ======================================== */
+   8. MANIFESTO
+======================================== */
 
-section {
-    padding: var(--space-xl) 0;
-    border-bottom: 2px solid var(--gray-light);
-}
-
-section:last-of-type {
-    border-bottom: none;
-}
-
-/* Manifesto Section */
-.manifesto p {
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: var(--space-m);
+#manifesto {
     padding: var(--space-l) 0 var(--space-xl) 0;
+    background-color: var(--white);
+}
+
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.manifesto-title-block {
+    position: relative;
 }
 
 .manifesto-title-block h2 {
+    font-size: 2.2rem;
+    line-height: 1.1;
     margin-bottom: var(--space-s);
 }
 
+.manifesto-bar {
+    width: 60px;
+    height: 6px;
+    background: linear-gradient(to right, var(--red-diner), var(--red-dark));
+    border-radius: 4px;
+}
+
 .manifesto-text p {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-m);
+    max-width: 480px;
+    line-height: 1.5;
     font-weight: 500;
 }
 
-@media (max-width: 900px) {
-    .manifesto-text p {
-        max-width: 90%;
-    }
-}
-
-
-
-/* ----------------------------------------
-   CARDÁPIO — MENU BOARD DINER
----------------------------------------- */
+/* ========================================
+   9. CARDÁPIO — MENU BOARD MODERNO RETRÔ
+======================================== */
 
 #cardapio {
     padding: var(--space-xl) 0;
@@ -356,18 +325,7 @@ section:last-of-type {
     margin-bottom: var(--space-l);
 }
 
-.menu-header h2 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.menu-subtitle {
-    font-size: 1rem;
-    opacity: 0.8;
-}
-
-/* Título Premium do Cardápio */
+/* Título premium do cardápio */
 .menu-header h2 {
     font-size: 2.4rem;
     text-transform: uppercase;
@@ -387,6 +345,11 @@ section:last-of-type {
     border-radius: 4px;
 }
 
+.menu-subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-top: var(--space-m);
+}
 
 /* GRID DOS ITENS */
 
@@ -395,7 +358,6 @@ section:last-of-type {
     grid-template-columns: repeat(4, minmax(260px, 1fr));
     gap: var(--space-l);
 }
-
 
 /* CARD INDIVIDUAL */
 
@@ -414,7 +376,6 @@ section:last-of-type {
     transform: translateY(-4px);
     box-shadow: 0 6px 0 var(--metal);
 }
-
 
 /* MINI FOTO */
 
@@ -436,7 +397,6 @@ section:last-of-type {
 .menu-item:hover .menu-thumb img {
     transform: scale(1.05);
 }
-
 
 /* CONTEÚDO DO CARD */
 
@@ -462,8 +422,8 @@ section:last-of-type {
     font-size: 1.15rem;
     font-weight: 700;
     color: var(--red-diner);
+    white-space: nowrap;
 }
-
 
 .menu-desc {
     font-size: 1rem;
@@ -471,326 +431,144 @@ section:last-of-type {
     line-height: 1.45;
 }
 
+/* ========================================
+   10. REVIEWS / COMO PEDIR / INFO / PEDIDO
+======================================== */
 
-/* RESPONSIVIDADE DO CARDÁPIO */
+/* REVIEWS */
 
-@media (max-width: 1024px) {
-    .menu-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+#reviews {
+    background-color: var(--gray-soft);
 }
 
-@media (max-width: 900px) {
-    .menu-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+#reviews .container {
+    max-width: 800px;
 }
 
-@media (max-width: 600px) {
-    .menu-grid {
-        grid-template-columns: 1fr;
-    }
-
-    #cardapio {
-        padding: var(--space-l) 0;
-    }
+#reviews h2 {
+    text-align: center;
+    margin-bottom: var(--space-m);
 }
 
-
-/* Reviews Section */
 blockquote {
     padding: var(--space-m);
     border-left: 6px solid var(--red-diner);
     background-color: #fff6f6;
     margin-bottom: var(--space-m);
-    border-radius: 0 var(--radius-m) var(--radius-m) 0;
 }
 
-blockquote footer {
-    font-weight: 600;
-    color: var(--red-diner);
-    margin-top: var(--space-xs);
+/* COMO PEDIR */
+
+#como-pedir {
+    background-color: var(--white);
 }
 
-/* Como Pedir Section */
+#como-pedir .container {
+    max-width: 800px;
+}
+
+#como-pedir h2 {
+    text-align: center;
+    margin-bottom: var(--space-m);
+}
+
 #como-pedir ol {
     margin-left: var(--space-m);
     font-weight: 500;
-    counter-reset: step-counter;
 }
 
-#como-pedir li {
-    margin-bottom: var(--space-s);
-    position: relative;
-    padding-left: var(--space-m);
+/* INFO */
+
+#info {
+    background-color: var(--gray-soft);
 }
 
-#como-pedir li::before {
-    counter-increment: step-counter;
-    content: counter(step-counter);
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: var(--red-diner);
-    color: var(--white);
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: bold;
+#info .container {
+    max-width: 800px;
 }
 
-/* Informações Section */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-m);
-}
-
-.info-item {
+#info h2 {
     text-align: center;
-    padding: var(--space-m);
-    background: var(--gray-light);
-    border-radius: var(--radius-m);
+    margin-bottom: var(--space-m);
 }
 
-/* Pedido Section */
+#info ul {
+    list-style: none;
+    text-align: center;
+}
+
+#info li {
+    margin-bottom: var(--space-xs);
+}
+
+/* PEDIDO */
+
 #pedido {
     text-align: center;
-    background: linear-gradient(135deg, var(--red-diner) 0%, var(--red-dark) 100%);
-    color: var(--white);
-    border-bottom: none;
-}
-
-#pedido .btn {
-    background-color: var(--white);
-    color: var(--red-diner);
-    border-color: var(--white);
-    box-shadow: 0 4px 0 var(--metal);
-    font-size: 1.25rem;
-    padding: var(--space-m) var(--space-xl);
+    padding: var(--space-l) 0 var(--space-xl) 0;
 }
 
 /* ========================================
-   FOOTER
-   ======================================== */
+   11. FOOTER
+======================================== */
 
 footer {
     background-color: var(--black);
     color: var(--white);
     text-align: center;
-    padding: var(--space-l) 0;
+    padding: var(--space-m) 0;
+    font-size: 0.9rem;
 }
 
 /* ========================================
-   RESPONSIVIDADE
-   ======================================== */
+   12. RESPONSIVIDADE
+======================================== */
 
-@media (min-width: 900px) {
-    .hero-image-wrapper img {
-        height: 420px;
+@media (max-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
     }
 }
-  
 
-/* Tablet */
-@media (max-width: 1024px) {
-    :root {
-        --space-xl: 3rem;
-        --space-l: 2rem;
-    }
-    
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-l);
+@media (max-width: 900px) {
+
+    header .container {
+        flex-direction: column;
         text-align: center;
     }
-    
-    .hero-content {
+
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
         flex-direction: column;
         align-items: center;
-        gap: var(--space-m);
     }
-    
+
     .hero-badge {
-        transform: none;
-        margin-bottom: var(--space-s);
+        margin-bottom: var(--space-m);
     }
-    
-    .hero-subtitle {
+
+    .hero-heading-block h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-sub {
+        font-size: 1rem;
         max-width: 100%;
     }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
-    :root {
-        --space-xl: 2.5rem;
-        --space-l: 1.5rem;
+    .hero-image-wrapper img {
+        height: 320px;
     }
-    
-    .header-content {
-        flex-direction: column;
-        gap: var(--space-s);
-    }
-    
-    nav ul {
-        gap: var(--space-s);
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .hero-image {
-        height: 300px;
-    }
-    
-    .cardapio-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    #como-pedir ol {
-        margin-left: 0;
-    }
-    
-    #como-pedir li {
-        padding-left: var(--space-l);
-    }
-}
 
-/* Mobile Pequeno */
-@media (max-width: 480px) {
-    :root {
-        --space-xl: 2rem;
-    }
-    
-    .container {
-        width: 95%;
-        padding: 0 var(--space-xs);
-    }
-    
-    .hero-badge {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .badge-title {
-        font-size: 0.75rem;
-    }
-    
-    .badge-sub {
-        font-size: 0.65rem;
-    }
-    
-    #pedido .btn {
-        width: 100%;
-        font-size: 1.1rem;
-    }
-}
-
-/* ========================================
-   ACESSIBILIDADE
-   ======================================== */
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-    
-    html {
-        scroll-behavior: auto;
-    }
-}
-
-/* Foco visível para teclado */
-.btn:focus-visible,
-nav a:focus-visible {
-    outline: 3px solid var(--red-dark);
-    outline-offset: 2px;
-}
-
-/* ========================================
-   UTILITÁRIOS
-   ======================================== */
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.full-width {
-    width: 100%;
-}
-
-/* ----------------------------------------
-   MANIFESTO — VISUAL DINER RETRÔ MODERNO
----------------------------------------- */
-
-#manifesto {
-    padding: var(--space-xl) 0;
-    background-color: var(--white);
-}
-
-.manifesto-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    align-items: center;
-    gap: var(--space-xl);
-}
-
-/* TÍTULO COM IDENTIDADE */
-.manifesto-title-block {
-    position: relative;
-}
-
-.manifesto-title-block h2 {
-    font-size: 2rem;
-    line-height: 1.1;
-    margin-bottom: var(--space-m);
-    text-transform: uppercase;
-}
-
-/* BARRA RETRÔ LATERAL */
-.manifesto-bar {
-    width: 60px;
-    height: 6px;
-    background: linear-gradient(
-        to right,
-        var(--red-diner),
-        var(--red-dark)
-    );
-    border-radius: 4px;
-}
-
-/* TEXTO */
-.manifesto-text p {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-m);
-    max-width: 480px;
-    line-height: 1.5;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 900px) {
     .manifesto-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -805,7 +583,38 @@ nav a:focus-visible {
     }
 
     .manifesto-text p {
+        max-width: 90%;
         margin-left: auto;
         margin-right: auto;
     }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        gap: var(--space-m);
+    }
 }
+
+@media (max-width: 600px) {
+    #cardapio {
+        padding: var(--space-l) 0;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: var(--space-l) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    .hero-heading-block h1 {
+        font-size: 2rem;
+    }
+}
+/* FIM DO CSS */
