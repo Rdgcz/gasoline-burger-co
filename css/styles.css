@@ -442,21 +442,28 @@ nav a {
 ======================================== */
 
 #cta-pedido {
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 var(--space-xxl) 0;
     background: var(--white);
     margin-bottom: var(--space-xl);
 }
 
 .cta-board {
     background: var(--white);
-    border: 4px solid var(--metal);
+    border: 6px solid var(--metal);
     border-radius: var(--radius-m);
-    padding: var(--space-xl) var(--space-l);
+    padding: var(--space-xl) var(--space-xl);
     text-align: center;
-    box-shadow: 0 8px 0 var(--metal);
-    max-width: 700px;
+    box-shadow: 0 10px 0 var(--metal), 0 0 60px rgba(0,0,0,0.08);
+    max-width: 760px;
     margin: 0 auto;
     position: relative;
+    transform: translateY(0);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cta-board:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 0 var(--metal), 0 0 70px rgba(0,0,0,0.12);
 }
 
 /* microbordas superior e inferior */
@@ -465,36 +472,72 @@ nav a {
     content: "";
     position: absolute;
     left: 50%;
-    width: 70%;
-    height: 6px;
+    width: 80%;
+    height: 8px;
     background: linear-gradient(to right, var(--red-diner), var(--red-dark));
     transform: translateX(-50%);
     border-radius: 4px;
 }
 
 .cta-board::before {
-    top: -20px;
+    top: -26px;
 }
 
 .cta-board::after {
-    bottom: -20px;
+    bottom: -26px;
 }
 
 .cta-board h2 {
-    font-size: 2.2rem;
+    font-size: 2.6rem;
     margin-bottom: var(--space-s);
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .cta-board p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     opacity: 0.9;
-    margin-bottom: var(--space-m);
+    margin-bottom: var(--space-l);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta-btn {
-    font-size: 1.1rem;
-    padding: 14px 30px;
+    font-size: 1.25rem !important;
+    padding: 16px 40px !important;
+    border-width: 3px !important;
+    box-shadow: 0 4px 0 var(--red-dark) !important;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--red-dark) !important;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .cta-board {
+        padding: var(--space-l);
+    }
+
+    .cta-board::before,
+    .cta-board::after {
+        width: 90%;
+    }
+
+    .cta-board h2 {
+        font-size: 2rem;
+    }
+
+    .cta-board p {
+        font-size: 1rem;
+    }
+
+    .cta-btn {
+        font-size: 1.1rem !important;
+        padding: 14px 32px !important;
+    }
 }
 
 /* Responsividade */
