@@ -444,6 +444,7 @@ nav a {
 #cta-pedido {
     padding: var(--space-xl) 0;
     background: var(--white);
+    margin-bottom: var(--space-xl);
 }
 
 .cta-board {
